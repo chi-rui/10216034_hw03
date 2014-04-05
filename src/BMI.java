@@ -5,30 +5,36 @@ import java.awt.event.*;
 
 
 public class BMI extends JFrame{
-	
+	//
 	JTextField jftName = new JTextField(8);
 	JTextField jftAge = new JTextField(8);
 	JTextField jftHeight = new JTextField(8);
 	JTextField jftWeight = new JTextField(8);
-	JTextField jftResult = new JTextField(8);
+	JTextField jftResult = new JTextField(15);
 	JButton jbtBMI = new JButton("≠p∫‚BMI");
 	
 	public BMI(){
+	
+	JPanel p1 = new JPanel(new GridLayout(5, 2));
+	
+	p1.add(new JLabel("Name :"));
+	p1.add(jftName);
+	p1.add(new JLabel("Age :"));
+	p1.add(jftAge);
+	p1.add(new JLabel("Height :"));
+	p1.add(jftHeight);
+	p1.add(new JLabel("Weight :"));
+	p1.add(jftWeight);
+	p1.add(new JLabel("        "));
+	p1.add(jbtBMI);
+	p1.setBorder(new TitledBorder("Enter your name, age, height and weight.\n"));
+	
+	JPanel p2 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+	p2.add(jftResult);
+	
+	add(p1, BorderLayout.CENTER);
+	add(p2, BorderLayout.SOUTH);
 		
-	setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
-	
-	add(new JLabel("Name :"));
-	add(jftName);
-	add(new JLabel("Age :"));
-	add(jftAge);
-	add(new JLabel("Height :"));
-	add(jftHeight);
-	add(new JLabel("Weight :"));
-	add(jftWeight);
-	add(jbtBMI);
-	add(new JLabel("BMI :"));
-	add(jftResult);
-	
 	jbtBMI.addActionListener(new ButtonListener());
 	}
 		
@@ -46,14 +52,15 @@ public class BMI extends JFrame{
 				h = h/100;
 				
 			double bmi = w / (h * h);
-			jftResult.setText(String.format("Name : " + n +"\nAge : " + a + "\nBMI : %.2f",bmi));
+			jftResult.setText(String.format("Your BMI : %.2f",bmi));
 		}
 	}
+	
 	
 	public static void main(String[] args){
 		JFrame frame = new BMI();
 		frame.setTitle("BMI");
-		frame.setSize(200, 200);
+		frame.setSize(300, 250);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
