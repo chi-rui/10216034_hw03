@@ -51,7 +51,7 @@ public class BMI extends JFrame{
 			double h = Double.parseDouble(jftHeight.getText());
 			double w = Double.parseDouble(jftWeight.getText());
 			
-			MathBMI ans = new MathBMI(n, a, h, w);
+			MathBMI ans = new MathBMI(n, a, w, h);
 			
 			// compute BMI.	
 			double bmi = ans.getBMI();
@@ -71,6 +71,7 @@ public class BMI extends JFrame{
 	}
 }
 
+// BMI class
 class MathBMI{
 	  private String name;
 	  private int age;
